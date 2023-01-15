@@ -1,13 +1,25 @@
 import { useState } from 'react';
 import './App.css';
-import StoredList from './components/StoredList';
+import ItemsofList from './components/ItemsofList';
 import TextEnter from './components/TextEnter';
 
 function App() {
-	const [inputList, setInputList] = useState('buy Apple');
+	const [inputList, setInputList] = useState('');
+	const [itemsofList, setItemsofList] = useState([]);
 
 	const itemEvent = (e) => {
 		setInputList(e.target.value);
+	};
+
+	const changeListofItems = () => {
+		setItemsofList([...itemsofList, inputList]);
+		setInputList('');
+	};
+
+	const delKey = (item) => {
+		//* as filter method return a array with given condition applied on it
+		let newArr = itemsofList.filter((items) => items !== item);
+		setItemsofList(newArr);
 	};
 
 	return (
@@ -18,8 +30,17 @@ function App() {
 						<div className="heading">
 							<h1 className="my-4 d-flex justify-content-center">ToDo LisT</h1>
 						</div>
-						<TextEnter onChange={itemEvent} />
-						<StoredList inputList={inputList} />
+
+						{/* //* text that the user enters */}
+						<TextEnter
+							onChange={itemEvent}
+							setInputList={setInputList}
+							onClick={changeListofItems}
+							value={inputList}
+						/>
+
+						{/* //* here i am displaying my items that are stored */}
+						<ItemsofList itemsofList={itemsofList} delKey={delKey} />
 					</div>
 				</div>
 			</div>

@@ -11,10 +11,13 @@ const TextEnter = (props) => {
 						placeholder="Add"
 						aria-label="default input example"
 						onChange={props.onChange}
+						value={props.value}
 					></input>
 				</div>
 				<div className="col-12 col-sm-6">
-					<button className="btn btn-primary">Add</button>
+					<button className="btn btn-primary" onClick={props.onClick}>
+						Add
+					</button>
 				</div>
 			</div>
 		</div>

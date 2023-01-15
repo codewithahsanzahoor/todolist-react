@@ -8,7 +8,7 @@ const Items = (props) => {
 					{props.inputList}
 				</div>
 				<div className="col-12 col-sm-6 ">
-					<button className="border rounded-5 btn btn-primary">-</button>
+					<button className="border rounded-5 btn btn-primary"> - </button>
 				</div>
 			</div>
 		</div>
